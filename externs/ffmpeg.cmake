@@ -1,6 +1,0 @@
-if(NOT TARGET depends::ffmpeg)
-  find_package(FFmpeg COMPONENTS AVCODEC AVUTIL REQUIRED)
-  add_library(depends::ffmpeg INTERFACE IMPORTED GLOBAL)
-  target_include_directories(depends::ffmpeg INTERFACE ${FFMPEG_INCLUDE_DIRS})
-  target_link_libraries(depends::ffmpeg INTERFACE ${FFMPEG_LIBRARIES})
-endif()

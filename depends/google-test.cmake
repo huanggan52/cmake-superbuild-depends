@@ -12,8 +12,12 @@ if(NOT TARGET depends::google-test)
   endif()
   set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
   set(INSTALL_GTEST     OFF)
+  
+  add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
+  target_compile_options(gtest PRIVATE -Wno-maybe-uninitialized)
+
   add_library(depends::google-test INTERFACE IMPORTED GLOBAL)
-  target_link_libraries(depends::google-test INTERFACE)
+  target_link_libraries(depends::google-test INTERFACE gtest)
   set(depends-google-test-source-dir ${depends-google-test_SOURCE_DIR} CACHE INTERNAL "" FORCE)
   set(depends-google-test-binary-dir ${depends-google-test_BINARY_DIR} CACHE INTERNAL "" FORCE)
   mark_as_advanced(depends-google-test-source-dir)

@@ -21,7 +21,7 @@ if(NOT TARGET depends::google-test)
         _NOEXCEPT=noexcept
     )
   endif()
-  target_include_directories(depends::yaml-cpp INTERFACE ${depends-google-test_SOURCE_DIR}/include)
+  target_include_directories(depends::google-test INTERFACE ${depends-google-test_SOURCE_DIR}/include)
   target_link_libraries(depends::google-test INTERFACE googletest options::modern-cpp)
   set(depends-google-test-source-dir ${depends-google-test_SOURCE_DIR} CACHE INTERNAL "" FORCE)
   set(depends-google-test-binary-dir ${depends-google-test_BINARY_DIR} CACHE INTERNAL "" FORCE)

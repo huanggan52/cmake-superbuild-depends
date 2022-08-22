@@ -2,7 +2,7 @@ if(NOT TARGET depends::lightvis)
   FetchContent_Declare(
     depends-lightvis
     GIT_REPOSITORY https://github.com/huanggan52/lightvis.git
-    GIT_TAG        test
+    GIT_TAG        xrslam
   )
   FetchContent_GetProperties(depends-lightvis)
   if(NOT depends-lightvis_POPULATED)

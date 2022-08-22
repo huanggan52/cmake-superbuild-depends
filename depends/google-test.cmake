@@ -15,7 +15,7 @@ if(NOT TARGET depends::google-test)
   
   add_subdirectory(${depends-google-test_SOURCE_DIR} ${depends-google-test_BINARY_DIR})
   add_library(depends::google-test INTERFACE IMPORTED GLOBAL)
-#   target_compile_options(gtest PRIVATE -Wno-maybe-uninitialized)
+  target_compile_options(gtest PRIVATE -Wno-maybe-uninitialized)
   target_link_libraries(depends::google-test INTERFACE gtest)
   set(depends-google-test-source-dir ${depends-google-test_SOURCE_DIR} CACHE INTERNAL "" FORCE)
   set(depends-google-test-binary-dir ${depends-google-test_BINARY_DIR} CACHE INTERNAL "" FORCE)

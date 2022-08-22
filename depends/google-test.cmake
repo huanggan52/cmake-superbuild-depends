@@ -1,4 +1,7 @@
 if(NOT TARGET depends::google-test)
+  if(NOT TARGET options::modern-cpp)
+    message(FATAL_ERROR "depends::yaml-cpp expects options::modern-cpp")
+  endif()
   FetchContent_Declare(
       depends-google-test
       GIT_REPOSITORY https://github.com/google/googletest.git

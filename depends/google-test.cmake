@@ -15,8 +15,14 @@ if(NOT TARGET depends::google-test)
   endif()
   add_subdirectory(${depends-google-test_SOURCE_DIR} ${depends-google-test_BINARY_DIR})
   add_library(depends::google-test INTERFACE IMPORTED GLOBAL)
-  target_compile_options(gtest PRIVATE -Wno-maybe-uninitialized)
-  target_link_libraries(depends::google-test INTERFACE gtest)
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    target_compile_definitions(googletest
+      PUBLIC
+        _NOEXCEPT=noexcept
+    )
+  endif()
+  target_include_directories(depends::yaml-cpp INTERFACE ${depends-google-test_SOURCE_DIR}/include)
+  target_link_libraries(depends::google-test INTERFACE googletest options::modern-cpp)
   set(depends-google-test-source-dir ${depends-google-test_SOURCE_DIR} CACHE INTERNAL "" FORCE)
   set(depends-google-test-binary-dir ${depends-google-test_BINARY_DIR} CACHE INTERNAL "" FORCE)
   mark_as_advanced(depends-google-test-source-dir)
